@@ -19,5 +19,3 @@ EXPOSE 3000
 WORKDIR $HOME/$APP_NAME
 
 RUN npm install
-
-CMD ["npm", "start"]

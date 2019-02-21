@@ -17,7 +17,4 @@ USER app
 WORKDIR $HOME/$APP_NAME
 RUN npm install
 
-EXPOSE 4200
-EXPOSE 49152
-
-CMD ["npm", "start"]
+EXPOSE 4200 49152
