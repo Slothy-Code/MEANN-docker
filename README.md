@@ -1,4 +1,4 @@
-# Angular 2, Express, Redis and Docker Compose project starter
+# Angular 2, Express and Docker Compose project starter
 
 ## Getting started
 
