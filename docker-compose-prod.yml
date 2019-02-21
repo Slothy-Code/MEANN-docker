@@ -1,0 +1,21 @@
+version: '3'
+services:
+  frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile-prod
+    image: 'frontend_prod'
+    volumes:
+      - '/opt/frontend:/home/app/client/dist'
+    env_file: prod.env
+    command: npm run build
+  server:
+    build: server
+    ports:
+      - '80:3000'
+    volumes:
+      - '/opt/frontend:/home/app/server/public'
+    depends_on:
+      - client
+    env_file: prod.env
+    command: [pm2-docker, /home/app/server/bin/www]

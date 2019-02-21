@@ -1,0 +1,19 @@
+version: '3'
+services:
+  frontend:
+    build: frontend
+    ports:
+      - '4200:4200'
+      - '49152:49152'
+    volumes:
+      - './frontend/src:/home/app/client/src'
+    env_file: .env
+    command: npm start
+  server:
+    build: server
+    ports:
+      - '3000:3000'
+    volumes:
+      - './server/routes:/home/app/server/routes'
+    env_file: .env
+    command: npm start
