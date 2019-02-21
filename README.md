@@ -6,7 +6,11 @@
 
 ## Development
 
-    $ docker-compose up -d
+     docker-compose build
+
+After successfully:
+    
+     docker-compose up -d
 
 The following services will be available:
 
