@@ -1,19 +1,33 @@
 version: '3'
 services:
   frontend:
+    container_name: frontend
     build: frontend
     ports:
       - '4200:4200'
       - '49152:49152'
     volumes:
-      - './frontend/src:/home/app/client/src'
+      - './frontend:/home/app/frontend'
+      - '/home/app/frontend/node_modules'
     env_file: .env
     command: npm start
   server:
+    container_name: server
     build: server
     ports:
       - '3000:3000'
     volumes:
-      - './server/routes:/home/app/server/routes'
+      - './server:/home/app/server'
+      - '/home/app/server/node_modules'
     env_file: .env
+    depends_on:
+      - mongodb
     command: npm start
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    env_file: .env
+    volumes:
+      - ./db:/data/db
+    ports:
+      - "27017:27017"
